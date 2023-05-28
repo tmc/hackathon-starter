@@ -1,6 +1,6 @@
 # hackathon templates
 
-This directory tree contains different starter templates to get going quickly at a hackathon, expecting there to be some language heterogenity at play.
+This directory contains different starter templates to get going quickly at a hackathon, expecting there to be some language heterogenity at play.
 
 Templates:
 
