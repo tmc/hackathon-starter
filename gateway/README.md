@@ -18,4 +18,4 @@ cd gateway
 make run
 ```
 
-Then open `http://localhost:8080` in your browser to access the frontend.
+Then open `http://localhost:4000` in your browser to access the frontend.
