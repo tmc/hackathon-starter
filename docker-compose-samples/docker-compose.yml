@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+
+  frontend:
+    build:
+      context: ../react-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - gateway
+
+  gateway:
+    build:
+      context: ../gateway
+    command:
+      - --dev
+      - --supergraph
+      - supergraph.graphql
+    ports:
+      - "4000:4000"
+
+  backend-a:
+    build:
+      context: ../graphene-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+
+  backend-b:
+    build:
+      context: ../go-graphql-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: dbpssword
+      POSTGRES_DB: db
+    volumes:
+      - database-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis/redis-stack
+    ports:
+      - "6379:6379"
+      - "6380:8001" # RedisInsight port
+    volumes:
+      - redis-data:/data
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+      - "14268:14268"
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+
+volumes:
+  database-data:
+  redis-data:
