@@ -11,6 +11,9 @@ clean:
 run:
 	npm start
 
+watch-codegen:
+	yarn graphql-codegen --watch
+
 docker-build:
 	docker build -t $(APP_NAME) .
 

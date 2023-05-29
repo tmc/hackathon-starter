@@ -1,12 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useQuery } from '@apollo/client'
 import './App.css';
+import { graphql } from '../src/gql'
+
+
+// Sample Query-- the codegen does not create code that compiles if there are
+// no queries registered via the 'graphql' function
+const getTodosQueryDocument = graphql(/* GraphQL */`
+  query GetTodos {
+    todos {
+      id
+    }
+  }
+`)
 
 function App() {
+  // 'data' is typed
+  const { data } = useQuery(getTodosQueryDocument, { variables: {}})
+  console.log(data)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
