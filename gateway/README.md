@@ -1,20 +1,20 @@
-# Backend Gateway
+#  Gateway
 
-The `backend-gateway` template shows how to use apollo router and rover to develop a federated graphql gateway.
+The `gateway` template shows how to use apollo router and rover to develop a federated graphql gateway.
 
 ## Installation
 
-To get started with the `backend-gateway` template:
+To get started with the `gateway` template:
 
 1. Clone this repository: `git clone https://github.com/<username>/<repo>.git`
-2. Navigate to the `backend-gateway` directory: `cd hackathon-templates/backend-gateway`
+2. Navigate to the `gateway` directory: `cd hackathon-templates/gateway`
 3. Run `make deps` to install the dependencies.
 
 ## Usage
 
 ```bash
-# Backend Gateway
-cd backend-gateway
+# Gateway
+cd gateway
 make run
 ```
 
