@@ -16,8 +16,8 @@ This template provides a basic structure to build a React frontend application w
 Firstly, clone this repository and navigate to the `react-frontend` directory:
 
 ```
-git clone https://github.com/example/hackathon-templates.git
-cd hackathon-templates/react-frontend
+git clone https://github.com/<user>/hackathon-starter.git
+cd hackathon-starter/react-frontend
 ```
 
 Then install the dependencies using Yarn:
