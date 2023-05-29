@@ -71,11 +71,5 @@ export type GetTodosQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetTodosQuery = { __typename?: 'Query', todos: Array<{ __typename?: 'Todo', id: string }> };
 
-export type GetTodos2QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetTodos2Query = { __typename?: 'Query', todos: Array<{ __typename?: 'Todo', id: string, done: boolean }> };
-
 
 export const GetTodosDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetTodos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<GetTodosQuery, GetTodosQueryVariables>;
-export const GetTodos2Document = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetTodos2"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"done"}}]}}]}}]} as unknown as DocumentNode<GetTodos2Query, GetTodos2QueryVariables>;
