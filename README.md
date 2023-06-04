@@ -17,9 +17,12 @@ query User($userId: ID!) {
   }
 }
 ```
-With arguments of ```json
+
+With arguments of
+```json
 {"userId": 42}
 ```
+
 Returning
 ```json
 {
