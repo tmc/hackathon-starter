@@ -16,8 +16,8 @@ This template provides a basic structure to build a React frontend application w
 Firstly, clone this repository and navigate to the `react-frontend` directory:
 
 ```
-git clone https://github.com/example/hackathon-templates.git
-cd hackathon-templates/react-frontend
+git clone https://github.com/<user>/hackathon-starter.git
+cd hackathon-starter/react-frontend
 ```
 
 Then install the dependencies using Yarn:
@@ -34,6 +34,22 @@ npm install
 
 ## Usage
 
+### Deving with codegen
+You can run the codegen cli with the make target
+```
+make watch-codegen
+```
+
+or underlying command:
+```
+yarn graphql-codegen --watch
+```
+
+This will watch your files for any queries/mutations/subscriptions authored and copy them into
+`src/gql-gen/gql.ts` and `src/gql-gen/graphql.tx` so the return values can be typed. It will also pick up any
+changes to the overall schema defined in `../gateway/supergraph.graphql`. This helps ensure the typing is
+consistent across the stack and eliminates the need to manually define types in multiple places
+
 ### Running locally
 
 You can start a development server by running:
@@ -48,7 +64,7 @@ Or:
 npm run start
 ```
 
-This will start a local development server at `localhost:1234`. Any changes you make to the code will automatically trigger a reload of the page.
+This will start a local development server at `localhost:3000`. Any changes you make to the code will automatically trigger a reload of the page.
 
 ### Building for production
 

@@ -1,12 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useQuery } from '@apollo/client'
 import './App.css';
+import { graphql } from '../src/gql-gen'
+
+
+// Sample Query-- the codegen does not create code that compiles if there are
+// no queries registered via the 'graphql' function
+const getUserQueryDocument = graphql(`
+  query GetUser($userId: ID!) {
+    user(id: $userId) {
+      id
+      username
+      description
+    }
+  }
+`)
 
 function App() {
+  // 'data' is typed
+  const { data } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -18,6 +33,12 @@ function App() {
         >
           Learn React
         </a>
+        <p>
+          sample data:
+        </p>
+        <div style={{fontSize: 'small'}}>
+          {JSON.stringify(data)}
+        </div>
       </header>
     </div>
   );

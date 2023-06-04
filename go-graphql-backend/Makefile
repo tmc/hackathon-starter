@@ -17,6 +17,11 @@ build:
 	@echo "Building binary..."
 	go build -o bin/go-graphql-backend main.go
 
+.PHONY: run-dev
+run-dev:
+	command -v wgo || go install github.com/bokwoon95/wgo@latest
+	wgo run .
+
 # Lint rules
 lint-install:
 	@echo "Installing linters..."
