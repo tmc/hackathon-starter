@@ -18,33 +18,14 @@ export type Scalars = {
   link__Import: { input: any; output: any; }
 };
 
-export type Mutation = {
-  __typename?: 'Mutation';
-  createTodo: Todo;
-};
-
-
-export type MutationCreateTodoArgs = {
-  input: NewTodo;
-};
-
-export type NewTodo = {
-  text: Scalars['String']['input'];
-  userId: Scalars['String']['input'];
-};
-
 export type Query = {
   __typename?: 'Query';
-  me?: Maybe<User>;
-  todos: Array<Todo>;
+  user?: Maybe<User>;
 };
 
-export type Todo = {
-  __typename?: 'Todo';
-  done: Scalars['Boolean']['output'];
-  id: Scalars['ID']['output'];
-  text: Scalars['String']['output'];
-  user: User;
+
+export type QueryUserArgs = {
+  id: Scalars['ID']['input'];
 };
 
 export type User = {
@@ -66,10 +47,12 @@ export enum Link__Purpose {
   Security = 'SECURITY'
 }
 
-export type GetTodosQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetUserQueryVariables = Exact<{
+  userId: Scalars['ID']['input'];
+}>;
 
 
-export type GetTodosQuery = { __typename?: 'Query', todos: Array<{ __typename?: 'Todo', id: string }> };
+export type GetUserQuery = { __typename?: 'Query', user?: { __typename?: 'User', id: string } | null };
 
 
-export const GetTodosDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetTodos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<GetTodosQuery, GetTodosQueryVariables>;
+export const GetUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<GetUserQuery, GetUserQueryVariables>;

@@ -6,9 +6,9 @@ import { graphql } from '../src/gql'
 
 // Sample Query-- the codegen does not create code that compiles if there are
 // no queries registered via the 'graphql' function
-const getTodosQueryDocument = graphql(/* GraphQL */`
-  query GetTodos {
-    todos {
+const getUserQueryDocument = graphql(/* GraphQL */`
+  query GetUser($userId: ID!) {
+    user(id: $userId) {
       id
     }
   }
@@ -16,7 +16,7 @@ const getTodosQueryDocument = graphql(/* GraphQL */`
 
 function App() {
   // 'data' is typed
-  const { data } = useQuery(getTodosQueryDocument, { variables: {}})
+  const { data } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
   console.log(data)
   return (
     <div className="App">
