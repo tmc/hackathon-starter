@@ -93,7 +93,7 @@ Finally, you can explore the `gateway` and `dev-harness` directories to see exam
 To launch a pre-prepared set of services you can run:
 
 ```shell
-make sample-service-set
+make run-sample-service-set
 ```
 
 ## Further Reading
