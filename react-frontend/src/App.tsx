@@ -6,10 +6,11 @@ import { graphql } from '../src/gql-gen'
 
 // Sample Query-- the codegen does not create code that compiles if there are
 // no queries registered via the 'graphql' function
-const getUserQueryDocument = graphql(/* GraphQL */`
+const getUserQueryDocument = graphql(`
   query GetUser($userId: ID!) {
     user(id: $userId) {
       id
+      username
       description
     }
   }
@@ -18,7 +19,6 @@ const getUserQueryDocument = graphql(/* GraphQL */`
 function App() {
   // 'data' is typed
   const { data } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
-  console.log(data)
   return (
     <div className="App">
       <header className="App-header">
@@ -33,6 +33,12 @@ function App() {
         >
           Learn React
         </a>
+        <p>
+          sample data:
+        </p>
+        <div style={{fontSize: 'small'}}>
+          {JSON.stringify(data)}
+        </div>
       </header>
     </div>
   );
