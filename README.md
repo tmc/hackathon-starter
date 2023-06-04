@@ -77,6 +77,7 @@ The sample service set will attempt to bind these local network ports:
 
 
 **note**: Run `make port-doctor` to see if these ports are already bound by another process.
+
 **note**: Run `make port-doctor-kevorkian` to try to kill processes listening to these ports.
 
 ### Running the Project
