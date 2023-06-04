@@ -1,18 +1,15 @@
 # React Frontend Template
 
-This is a minimal [React](https://reactjs.org/) frontend template, built with [TypeScript](https://www.typescriptlang.org/) and [Parcel](https://parceljs.org/).
+This is a minimal [React](https://reactjs.org/) frontend template, built with [TypeScript](https://www.typescriptlang.org/).
 
 ## Introduction
 
-This template provides a basic structure to build a React frontend application with TypeScript. By using Parcel as the bundler, we can easily set up our development environment and start coding right away.
+This template provides a basic structure to build a React frontend application with TypeScript.
 
 ## Dependencies
 
-- Node.js (v10 or later)
+- Node.js (v18 or later)
 - Yarn (or npm)
-- React
-- TypeScript
-- Parcel
 
 ## Installation
 
@@ -91,4 +88,4 @@ Please feel free to submit issues, fork the repository and send pull requests!
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the ISC License - see the [LICENSE](../LICENSE) file for details.

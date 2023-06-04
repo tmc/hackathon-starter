@@ -46,4 +46,4 @@ Contributions are welcome! Please see [CONTRIBUTING.md](../../CONTRIBUTING.md) f
 
 ## License
 
-This project is licensed under the [MIT License](../../LICENSE).
+This project is licensed under the ISC License - see the [LICENSE](../LICENSE) file for details.

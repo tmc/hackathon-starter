@@ -52,4 +52,4 @@ If you find any issues with this starter kit or have suggestions for how to impr
 
 ## License
 
-This starter kit is provided under the MIT license. See [LICENSE.txt](../LICENSE.txt) for details.
+This project is licensed under the ISC License - see the [LICENSE](../LICENSE) file for details.
