@@ -15,9 +15,17 @@ telemetry:
       sampler: 1
     propagation:
       trace_context: true
-    jaeger:
-      collector:
-        endpoint: "http://jaeger:14268"
+    otlp:
+      endpoint: "jaeger:4317"
+  metrics:
+    common:
+      service_name: "graphql-gateway"
+      # (Optional)
+      service_namespace: "test-ns"
+    prometheus:
+      enabled: true
+      listen: 0.0.0.0:4000
+      path: /metrics
 headers:
   all:
     request:

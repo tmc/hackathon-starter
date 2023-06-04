@@ -23,6 +23,7 @@ port-doctor: ## Check if the required ports are available.
 		3000 4000 8000 8080 \
 		5432 \
 		6379 6380 \
+		4317 4318 \
 		16686 14268
 
 .PHONY: port-doctor-kevorkian
@@ -32,6 +33,7 @@ port-doctor-kevorkian: ## Attempt to kill processes that are using the required 
 		3000 4000 8000 8080 \
 		5432 \
 		6379 6380 \
+		4317 4318 \
 		16686 14268
 
 .PHONY: clean
