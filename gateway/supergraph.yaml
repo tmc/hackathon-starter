@@ -21,6 +21,8 @@ headers:
     request:
       - propagate:
           matching: .*
+cors:
+  allow_any_origin: true
 subgraphs:
   backend-a:
     routing_url: http://backend-a:8000/graphql
