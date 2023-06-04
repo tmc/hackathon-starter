@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client'
 import './App.css';
-import { graphql } from '../src/gql'
+import { graphql } from '../src/gql-gen'
 
 
 // Sample Query-- the codegen does not create code that compiles if there are

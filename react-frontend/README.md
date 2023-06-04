@@ -46,7 +46,7 @@ yarn graphql-codegen --watch
 ```
 
 This will watch your files for any queries/mutations/subscriptions authored and copy them into
-`src/gql/gql.ts` and `src/gql/graphql.tx` so the return values can be typed. It will also pick up any
+`src/gql-gen/gql.ts` and `src/gql-gen/graphql.tx` so the return values can be typed. It will also pick up any
 changes to the overall schema defined in `../gateway/supergraph.graphql`. This helps ensure the typing is
 consistent across the stack and eliminates the need to manually define types in multiple places
 
