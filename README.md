@@ -93,8 +93,16 @@ Finally, you can explore the `gateway` and `dev-harness` directories to see exam
 To launch a pre-prepared set of services you can run:
 
 ```shell
-make run-sample-service-set
+$ make run-sample-service-set
 ```
+
+Then to run the frontend:
+```shell
+$ cd react-frontend
+$ yarn
+$ yarn start
+```
+
 
 ## Further Reading
 
