@@ -10,7 +10,6 @@ const getUserQueryDocument = graphql(/* GraphQL */`
   query GetUser($userId: ID!) {
     user(id: $userId) {
       id
-      username
       description
     }
   }
