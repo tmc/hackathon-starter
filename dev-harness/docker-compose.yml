@@ -2,21 +2,26 @@ version: '3'
 
 services:
 
-  frontend:
-    build:
-      context: ../react-frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - gateway
+  # Use `yarn start` in the react-frontend directory to start the frontend.
+  # frontend:
+  #   build:
+  #     context: ../react-frontend
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - gateway
 
   gateway:
     build:
       context: ../gateway
     command:
       - --dev
+      - --config
+      - config.yaml
       - --supergraph
       - supergraph.graphql
+      # - --log # uncomment these to do gateway debugging
+      # - debug
     ports:
       - "4000:4000"
 

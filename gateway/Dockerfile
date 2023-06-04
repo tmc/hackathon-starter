@@ -1,6 +1,7 @@
-FROM ghcr.io/apollographql/router:v1.19.1
+FROM ghcr.io/apollographql/router:v1.20.0
 
-COPY supergraph.graphql .
+COPY *.graphql .
+COPY *.yaml .
 
 EXPOSE 4000
 

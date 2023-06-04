@@ -1,26 +1,6 @@
-# Configuration for Apollo Router
+# Configuration for Apollo Router supergraph configuration
 ---
 federation_version: =2.3.2
-sandbox:
-  enabled: true
-supergraph:
-  listen: 0.0.0.0:4000
-telemetry:
-  tracing:
-    trace_config:
-      service_name: "router"
-      service_namespace: "apollo"
-      sampler: 1
-    propagation:
-      trace_context: true
-    jaeger:
-      collector:
-        endpoint: "http://jaeger"
-headers:
-  all:
-    request:
-      - propagate:
-          matching: .*
 subgraphs:
   backend-a:
     routing_url: http://backend-a:8000/graphql
