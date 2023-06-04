@@ -4,6 +4,8 @@
 APP_NAME=myapp
 IMG_NAME=mycontainer
 
+generate:
+
 # Commands
 install:
 	# Python dependencies

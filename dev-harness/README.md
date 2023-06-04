@@ -1,9 +1,9 @@
-# Hackathon Templates - Docker Compose Samples
+# Hackathon Templates - Development Harnessj
 
-This directory contains a few examples that show how to mix and match the different templates provided in this repository using Docker Compose.
+This directory contains a few examples that show how to mix and match the different templates provided in this repository using Docker Compose and Tilt
 
 ## Dependencies
-- Docker and Docker Compose
+- Docker and Tilt
 
 ## Usage
 1. Clone the repository.
@@ -11,9 +11,9 @@ This directory contains a few examples that show how to mix and match the differ
 git clone https://github.com/your-username/hackathon-templates.git
 ```
 
-2. Navigate to the `docker-compose-samples` directory.
+2. Navigate to the `dev-harness` directory.
 ```sh
-cd hackathon-templates/docker-compose-samples 
+cd hackathon-templates/dev-harness 
 ```
 
 3. Run Docker Compose to start all the services.

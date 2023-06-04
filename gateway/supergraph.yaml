@@ -23,10 +23,10 @@ headers:
           matching: .*
 subgraphs:
   backend-a:
-    routing_url: http://docker-compose-samples-backend-a:8000
+    routing_url: http://backend-a:8000/graphql
     schema:
       file: ../graphene-backend/schema.graphql
   backend-b:
-    routing_url: http://docker-compose-samples-backend-b:8000
+    routing_url: http://backend-b:8080/graphql
     schema:
       file: ../go-graphql-backend/schema.graphql

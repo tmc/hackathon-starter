@@ -1,8 +1,8 @@
 type Query {
-  me: User
+  user(id: ID!): User
 }
 
-type User @key(fields: "id") {
+type User  @key(fields: "id") {
   id: ID!
   username: String!
 }

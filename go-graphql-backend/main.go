@@ -34,8 +34,8 @@ func main() {
 	s := graph.NewExecutableSchema(graph.Config{Resolvers: resolver})
 	srv := handler.NewDefaultServer(s)
 
-	router.Handle("/", playground.Handler("GraphQL playground", "/query"))
-	router.Handle("/query", srv)
+	router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
+	router.Handle("/graphql", srv)
 
 	cors := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},

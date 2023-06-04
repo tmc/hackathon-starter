@@ -3,7 +3,6 @@ schema
   @link(url: "https://specs.apollo.dev/join/v0.3", for: EXECUTION)
 {
   query: Query
-  mutation: Mutation
 }
 
 directive @join__enumValue(graph: join__Graph!) repeatable on ENUM_VALUE
@@ -23,8 +22,8 @@ directive @link(url: String, as: String, for: link__Purpose, import: [link__Impo
 scalar join__FieldSet
 
 enum join__Graph {
-  BACKEND_A @join__graph(name: "backend-a", url: "http://docker-compose-samples-backend-b:8000")
-  BACKEND_B @join__graph(name: "backend-b", url: "http://docker-compose-samples-backend-b:8000")
+  BACKEND_A @join__graph(name: "backend-a", url: "http://backend-a:8000/graphql")
+  BACKEND_B @join__graph(name: "backend-b", url: "http://backend-b:8080/graphql")
 }
 
 scalar link__Import
@@ -41,34 +40,11 @@ enum link__Purpose {
   EXECUTION
 }
 
-type Mutation
-  @join__type(graph: BACKEND_B)
-{
-  createTodo(input: NewTodo!): Todo!
-}
-
-input NewTodo
-  @join__type(graph: BACKEND_B)
-{
-  text: String!
-  userId: String!
-}
-
 type Query
   @join__type(graph: BACKEND_A)
   @join__type(graph: BACKEND_B)
 {
-  me: User @join__field(graph: BACKEND_A)
-  todos: [Todo!]! @join__field(graph: BACKEND_B)
-}
-
-type Todo
-  @join__type(graph: BACKEND_B)
-{
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
+  user(id: ID!): User
 }
 
 type User

@@ -6,18 +6,19 @@ class User(ObjectType):
     id = ID(required=True)
     username = String(required=True)
 
-    def __resolve_reference(self, info, **kwargs):
-        """
-        Here we resolve the reference of the user entity referenced by its `id` field.
-        """
-        return User(id=self.id, email=f"user_{self.id}@mail.com")
-
 class Query(ObjectType):
-    me = Field(User)
+    user = Field(User, id=ID(required=True))
+
+    def resolve_user(self, info, id):
+        """
+        Here we resolve the user entity by its `id` field.
+        """
+        print("resolving user", info, id)
+        return User(id=id, username=f"user{id} (from the python graphene backend)")
 
 schema = build_schema(query=Query)
 
 if __name__ == "__main__":
-    from graphql import graphql_sync
-    result = graphql_sync(schema.graphql_schema, '{ _service { sdl } }')
+    from graphql import graphql
+    result = graphql(schema, '{ _service { sdl } }')
     print(result.data["_service"]["sdl"].strip())

@@ -1,3 +1,5 @@
+generate: supergraph.graphql
+
 dev: deps supergraph.graphql
 	$(HOME)/.rover/bin/rover dev --router-config=supergraph.yaml
 

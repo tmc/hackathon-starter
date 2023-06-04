@@ -1,3 +1,6 @@
+.PHONY: generate
+generate: schema.graphql
+
 venv: requirements.in
 	python3 -m venv venv
 	venv/bin/pip install wheel pip-tools pipdeptree
@@ -6,5 +9,5 @@ venv: requirements.in
 	venv/bin/pipdeptree > .pip-deps.txt
 
 
-schema.graphql: venv main.py
-	venv/bin/python3 schema.py > schema.graphql
+schema.graphql: venv app/schema.py
+	venv/bin/python3 app/schema.py > schema.graphql

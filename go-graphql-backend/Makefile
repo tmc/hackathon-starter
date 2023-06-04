@@ -1,7 +1,11 @@
 # hackathon templates - ./go-graphql-backend/Makefile
 
 # Variables
-GOLANGCI_LINT_VERSION = v1.41.1
+GOLANGCI_LINT_VERSION = v1.44.1
+
+generate:
+	@echo "Generating code..."
+	go generate ./...
 
 # Installation rules
 install:
