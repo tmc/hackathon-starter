@@ -1,0 +1,25 @@
+# Configuration for Apollo Router
+---
+sandbox:
+  enabled: true
+supergraph:
+  listen: 0.0.0.0:4000
+  introspection: true
+cors:
+  allow_any_origin: true
+telemetry:
+  tracing:
+    trace_config:
+      service_name: "router"
+      service_namespace: "apollo"
+      sampler: 1
+    propagation:
+      trace_context: true
+    jaeger:
+      collector:
+        endpoint: "http://jaeger:14268"
+headers:
+  all:
+    request:
+      - propagate:
+          matching: .*
