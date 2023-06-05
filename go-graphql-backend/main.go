@@ -10,12 +10,12 @@ import (
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/extension"
+	"github.com/99designs/gqlgen/graphql/handler/lru"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/gorilla/websocket"
-	lru "github.com/hashicorp/golang-lru"
 	"github.com/rs/cors"
 )
 
@@ -39,6 +39,7 @@ func main() {
 	resolver := &graph.Resolver{}
 	s := graph.NewExecutableSchema(graph.Config{Resolvers: resolver})
 	srv := newServer(s)
+	srv = handler.NewDefaultServer(s)
 
 	router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
 	router.Handle("/graphql", srv)

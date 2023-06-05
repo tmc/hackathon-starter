@@ -26,14 +26,14 @@ const testSubscription = graphql(`
 function App() {
   // 'data' is typed
   const [subErrorState, setSubErrorState] = useState("");
-  const { data, loading, error, networkStatus } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
   const { data: subData, loading: subLoading } = useSubscription(testSubscription, { variables: {}, onError: (err) => {
     setSubErrorState(err.message)
   },
-    onData: (data) => {
-      console.log(data)
+    onData: (newData) => {
+      console.log(newData)
     }
   })
+  const { data, loading, error, networkStatus } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
   return (
     <div className="App">
       <header className="App-header">
@@ -56,10 +56,11 @@ function App() {
             loading: {loading ? 'true' : 'false'}<br/>
             error: {error ? 'true' : 'false'}<br/>
             networkStatus: {networkStatus}<br/>
-            {JSON.stringify(data)}<br/>
+            data: {JSON.stringify(data)}<br/>
+            <br/>
             subscription loading: {subLoading ? 'true' : 'false'}<br/>
             subscription err: {subErrorState}<br/>
-            {JSON.stringify(subData)}<br/>
+            subscription data: {JSON.stringify(subData)}<br/>
           </pre>
         </div>
       </header>
