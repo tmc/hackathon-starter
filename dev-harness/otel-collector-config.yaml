@@ -64,4 +64,4 @@ service:
       exporters: [logging, prometheus, prometheusremotewrite]
     metrics/spanmetrics:
       receivers: [spanmetrics]
-      exporters: [prometheus]
+      exporters: [prometheus, prometheusremotewrite]
