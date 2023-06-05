@@ -1,0 +1,51 @@
+# This file configures the OpenTelemetry Collector.
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+  prometheusremotewrite:
+    endpoint: http://prometheus:9090/api/v1/write
+    target_info:
+       enabled: true
+
+  logging:
+
+  jaeger:
+    endpoint: jaeger:14250
+    tls:
+      insecure: true
+
+connectors:
+  spanmetrics:
+    namespace: span.metrics
+
+processors:
+  batch:
+
+extensions:
+  health_check:
+  pprof:
+    endpoint: :1888
+  zpages:
+    endpoint: :55679
+
+service:
+  extensions: [pprof, zpages, health_check]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, jaeger, spanmetrics]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, prometheus, prometheusremotewrite]
+    metrics/spanmetrics:
+      receivers: [spanmetrics]
+      exporters: [prometheus]

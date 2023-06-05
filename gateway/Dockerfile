@@ -6,5 +6,7 @@ COPY --from=curl /usr/bin/curl /usr/bin/curl
 COPY *.graphql .
 COPY *.yaml .
 
+RUN /dist/router config schema > schema.json
+
 EXPOSE 4000
 

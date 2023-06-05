@@ -16,12 +16,10 @@ telemetry:
     propagation:
       trace_context: true
     otlp:
-      endpoint: "jaeger:4317"
+      endpoint: "otel-collector:4317"
   metrics:
     common:
       service_name: "graphql-gateway"
-      # (Optional)
-      service_namespace: "test-ns"
     prometheus:
       enabled: true
       listen: 0.0.0.0:4000
