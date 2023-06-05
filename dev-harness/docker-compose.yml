@@ -76,7 +76,6 @@ services:
       - PROMETHEUS_SERVER_URL=http://prometheus:9090
       - PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR=true
       - PROMETHEUS_QUERY_NAMESPACE=span_metrics
-      - PROMETHEUS_QUERY_DURATION_UNIT=s
 
   prometheus:
     container_name: prometheus
