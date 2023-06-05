@@ -3,6 +3,7 @@ schema
   @link(url: "https://specs.apollo.dev/join/v0.3", for: EXECUTION)
 {
   query: Query
+  subscription: Subscription
 }
 
 directive @join__enumValue(graph: join__Graph!) repeatable on ENUM_VALUE
@@ -45,6 +46,12 @@ type Query
   @join__type(graph: BACKEND_B)
 {
   user(id: ID!): User
+}
+
+type Subscription
+  @join__type(graph: BACKEND_B)
+{
+  testSubscription: String!
 }
 
 type User

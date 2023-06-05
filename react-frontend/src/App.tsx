@@ -1,5 +1,6 @@
 import React from 'react';
-import { useQuery } from '@apollo/client'
+import { useState } from 'react';
+import { useQuery, useSubscription } from '@apollo/client'
 import './App.css';
 import { graphql } from '../src/gql-gen'
 
@@ -16,9 +17,23 @@ const getUserQueryDocument = graphql(`
   }
 `)
 
+const testSubscription = graphql(`
+  subscription TestSubScription {
+    testSubscription
+  }
+`)
+
 function App() {
   // 'data' is typed
-  const { data } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
+  const [subErrorState, setSubErrorState] = useState("");
+  const { data, loading, error, networkStatus } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
+  const { data: subData, loading: subLoading } = useSubscription(testSubscription, { variables: {}, onError: (err) => {
+    setSubErrorState(err.message)
+  },
+    onData: (data) => {
+      console.log(data)
+    }
+  })
   return (
     <div className="App">
       <header className="App-header">
@@ -37,7 +52,15 @@ function App() {
           sample data:
         </p>
         <div style={{fontSize: 'small'}}>
-          {JSON.stringify(data)}
+          <pre>
+            loading: {loading ? 'true' : 'false'}<br/>
+            error: {error ? 'true' : 'false'}<br/>
+            networkStatus: {networkStatus}<br/>
+            {JSON.stringify(data)}<br/>
+            subscription loading: {subLoading ? 'true' : 'false'}<br/>
+            subscription err: {subErrorState}<br/>
+            {JSON.stringify(subData)}<br/>
+          </pre>
         </div>
       </header>
     </div>
