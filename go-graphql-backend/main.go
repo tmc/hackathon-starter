@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"go-graphql-backend/graph"
 	"log"
 	"net/http"
@@ -16,14 +17,24 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/gorilla/websocket"
+	"github.com/ravilushqa/otelgqlgen"
 	"github.com/rs/cors"
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
 func main() {
+	ctx := context.Background()
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
+
+	// Set up tracing.
+	shutdown, err := initOtelProvider()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer shutdown(ctx)
 
 	router := chi.NewRouter()
 
@@ -39,9 +50,11 @@ func main() {
 	resolver := &graph.Resolver{}
 	s := graph.NewExecutableSchema(graph.Config{Resolvers: resolver})
 	srv := newServer(s)
+	srv.Use(otelgqlgen.Middleware())
 
 	router.Handle("/", playground.Handler("GraphQL playground", "/graphql"))
-	router.Handle("/graphql", srv)
+	router.Handle("/graphql", otelhttp.NewHandler(srv, "graphql"))
+	// Set the context with the span from the request.
 
 	cors := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},

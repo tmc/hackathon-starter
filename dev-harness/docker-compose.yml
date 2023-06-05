@@ -30,6 +30,9 @@ services:
       context: ../graphene-backend
     ports:
       - "8000:8000"
+    environment:
+      OTEL_EXPORTER_OTLP_ENDPOINT: otel-collector:4317
+      OTEL_EXPORTER_OTLP_INSECURE: "true"
     depends_on:
       - database
 
@@ -38,6 +41,8 @@ services:
       context: ../go-graphql-backend
     ports:
       - "8080:8080"
+    environment:
+      OTEL_EXPORTER_OTLP_ENDPOINT: otel-collector:4317
     depends_on:
       - database
 
@@ -61,7 +66,7 @@ services:
       - redis-data:/data
 
   jaeger:
-    image: jaegertracing/all-in-one:latest
+    image: jaegertracing/all-in-one:1.46
     ports:
       - "16686:16686"
       - "14250:14250"
@@ -82,7 +87,7 @@ services:
       - "9090:9090"
 
   otel-collector:
-    image: otel/opentelemetry-collector
+    image: otel/opentelemetry-collector-contrib
     command: ["--config=/etc/otel-collector-config.yaml", "${OTELCOL_ARGS:-}"]
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml

@@ -27,9 +27,9 @@ exporters:
     tls:
       insecure: true
 
-# connectors:
-#   spanmetrics:
-#     namespace: span.metrics
+connectors:
+  spanmetrics:
+    namespace: span.metrics
 
 processors:
   batch:
@@ -57,12 +57,11 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-       #exporters: [logging, jaeger, spanmetrics]
-      exporters: [logging, jaeger]
+      exporters: [logging, jaeger, spanmetrics]
     metrics:
-      receivers: [otlp]
+      receivers: [otlp,spanmetrics]
       processors: [batch]
       exporters: [logging, prometheus, prometheusremotewrite]
-    # metrics/spanmetrics:
-    #   receivers: [spanmetrics]
-    #   exporters: [prometheus]
+    metrics/spanmetrics:
+      receivers: [spanmetrics]
+      exporters: [prometheus]

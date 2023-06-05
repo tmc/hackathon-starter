@@ -13,7 +13,6 @@ class Query(ObjectType):
         """
         Here we resolve the user entity by its `id` field.
         """
-        print("resolving user", info, id)
         return User(id=id, username=f"user{id} (from the python graphene backend)")
 
 schema = build_schema(query=Query)
