@@ -20,8 +20,8 @@ services:
       - config.yaml
       - --supergraph
       - supergraph.graphql
-      - --log # uncomment these to do gateway debugging
-      - debug
+        # - --log # uncomment these to do gateway debugging
+        # - debug
     ports:
       - "4000:4000"
 
@@ -76,15 +76,13 @@ services:
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
-    restart: always
     volumes:
       - ./prometheus.yaml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
 
   otel-collector:
-    image: otel/opentelemetry-collector-contrib
-    restart: always
+    image: otel/opentelemetry-collector
     command: ["--config=/etc/otel-collector-config.yaml", "${OTELCOL_ARGS:-}"]
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml

@@ -10,13 +10,18 @@ cors:
 telemetry:
   tracing:
     trace_config:
-      service_name: "router"
-      service_namespace: "apollo"
+      parent_based_sampler: false
+      service_name: "graphql-gateway"
+      # service_namespace: "gateway"
       sampler: 1
     propagation:
+      baggage: true
       trace_context: true
     otlp:
       endpoint: "otel-collector:4317"
+    experimental_response_trace_id:
+      enabled: true
+      header_name: "x-trace-id"
   metrics:
     common:
       service_name: "graphql-gateway"
