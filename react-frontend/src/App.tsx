@@ -29,9 +29,6 @@ function App() {
   const { data: subData, loading: subLoading } = useSubscription(testSubscription, { variables: {}, onError: (err) => {
     setSubErrorState(err.message)
   },
-    onData: (newData) => {
-      console.log(newData)
-    }
   })
   const { data, loading, error, networkStatus } = useQuery(getUserQueryDocument, { variables: {"userId": 42}})
   return (

@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+./run-chrome &
+pid=$!
+trap 'kill $pid' EXIT
+
+sleep 1
+# discover chrome ws url:
+url=$(curl -s http://localhost:9222/json/version | jq -r '.webSocketDebuggerUrl')
+if [ -z "$url" ]; then
+  echo "Failed to discover chrome ws url"
+  exit 1
+fi
+export K6_BROWSER_WS_URL=$url
+make run-browser-load-generation
+

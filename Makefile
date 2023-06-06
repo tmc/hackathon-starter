@@ -36,6 +36,11 @@ port-doctor-kevorkian: ## Attempt to kill processes that are using the required 
 		4317 4318 \
 		16686 14268
 
+.PHONY: run-load-generator
+run-load-generator: ## Run the load generator.
+	@echo "Running the load generator..."
+	@cd ./load-generation && make run
+
 .PHONY: clean
 clean: ## Cleans up and shuts down resources assocaited with this project.
 	@cd ./dev-harness && tilt down
