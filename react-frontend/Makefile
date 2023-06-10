@@ -3,16 +3,16 @@ APP_NAME=react-frontend
 
 # Commands
 install:
-	yarn
+	npm i
 
 clean:
 	rm -rf build
 
 run:
-	yarn start
+	npm start
 
 watch-codegen:
-	yarn graphql-codegen --watch
+	npm run graphql-codegen-watch
 
 docker-build:
 	docker build -t $(APP_NAME) .

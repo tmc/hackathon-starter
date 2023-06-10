@@ -4,7 +4,6 @@ import { useSubscription } from '@apollo/client'
 import './App.css';
 import { graphql } from '../src/gql-gen'
 
-
 const completionSubscription = graphql(`
   subscription GenericSubscription($prompt: String!) {
     genericCompletion(prompt: $prompt) {
