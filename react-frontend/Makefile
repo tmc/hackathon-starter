@@ -3,13 +3,13 @@ APP_NAME=react-frontend
 
 # Commands
 install:
-	npm install
+	yarn
 
 clean:
 	rm -rf build
 
 run:
-	npm start
+	yarn start
 
 watch-codegen:
 	yarn graphql-codegen --watch

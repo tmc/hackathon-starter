@@ -11,4 +11,10 @@ type Query {
 
 type Subscription {
   testSubscription: String!
+  genericCompletion(prompt: String!): CompletionChunk
+}
+
+type CompletionChunk {
+  text: String!
+  isLast: Boolean!
 }

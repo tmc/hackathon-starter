@@ -30,6 +30,7 @@ services:
       context: ../graphene-backend
     ports:
       - "8000:8000"
+    env_file: .env
     environment:
       OTEL_EXPORTER_OTLP_ENDPOINT: otel-collector:4317
       OTEL_EXPORTER_OTLP_INSECURE: "true"
@@ -41,6 +42,7 @@ services:
       context: ../go-graphql-backend
     ports:
       - "8080:8080"
+    env_file: .env
     environment:
       OTEL_EXPORTER_OTLP_ENDPOINT: otel-collector:4317
     depends_on:
@@ -50,6 +52,7 @@ services:
     image: postgres
     ports:
       - "5432:5432"
+    env_file: .env
     environment:
       POSTGRES_USER: dbuser
       POSTGRES_PASSWORD: dbpssword
@@ -71,6 +74,7 @@ services:
       - "16686:16686"
       - "14250:14250"
       - "14269:14269"
+    env_file: .env
     environment:
       - METRICS_STORAGE_TYPE=prometheus
       - PROMETHEUS_SERVER_URL=http://prometheus:9090

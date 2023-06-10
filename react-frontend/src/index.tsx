@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ApolloProvider } from '@apollo/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { RouterProvider } from "react-router-dom";
+
+import { router } from './Router';
 import { client } from './gqlClient';
 
 const root = ReactDOM.createRoot(
@@ -13,7 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <RouterProvider router={router} />
     </ApolloProvider>
   </React.StrictMode>
 );

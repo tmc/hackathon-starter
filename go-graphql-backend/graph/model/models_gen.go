@@ -2,6 +2,11 @@
 
 package model
 
+type CompletionChunk struct {
+	Text   string `json:"text"`
+	IsLast bool   `json:"isLast"`
+}
+
 type User struct {
 	ID          string `json:"id"`
 	Description string `json:"description"`

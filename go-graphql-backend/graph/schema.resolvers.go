@@ -35,6 +35,11 @@ func (r *subscriptionResolver) TestSubscription(ctx context.Context) (<-chan str
 	return ch, nil
 }
 
+// GenericCompletion is the resolver for the genericCompletion field.
+func (r *subscriptionResolver) GenericCompletion(ctx context.Context, prompt string) (<-chan *model.CompletionChunk, error) {
+	return r.genericCompletion(ctx, prompt)
+}
+
 // Query returns QueryResolver implementation.
 func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
