@@ -14,6 +14,7 @@ services:
   gateway:
     build:
       context: ../gateway
+    restart: always
     command:
       - --dev
       - --config
@@ -28,6 +29,7 @@ services:
   backend-a:
     build:
       context: ../graphene-backend
+    restart: always
     ports:
       - "8000:8000"
     env_file: .env
@@ -40,6 +42,7 @@ services:
   backend-b:
     build:
       context: ../go-graphql-backend
+    restart: always
     ports:
       - "8080:8080"
     env_file: .env
@@ -50,6 +53,7 @@ services:
 
   database:
     image: postgres
+    restart: always
     ports:
       - "5432:5432"
     env_file: .env
@@ -62,6 +66,7 @@ services:
 
   redis:
     image: redis/redis-stack
+    restart: always
     ports:
       - "6379:6379"
       - "6380:8001" # RedisInsight port
@@ -70,6 +75,7 @@ services:
 
   jaeger:
     image: jaegertracing/all-in-one:1.46
+    restart: always
     ports:
       - "16686:16686"
       - "14250:14250"
@@ -84,6 +90,7 @@ services:
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
+    restart: always
     command:
       - --config.file=/etc/prometheus/prometheus.yml
       - --storage.tsdb.path=/prometheus
@@ -97,6 +104,7 @@ services:
 
   otel-collector:
     image: otel/opentelemetry-collector-contrib
+    restart: always
     command:
       - --config=/etc/otel-collector-config.yaml
       - ${OTELCOL_ARGS:-}
