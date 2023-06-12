@@ -13,9 +13,14 @@ This codebase requires the following tools to be present on your machine.
 
 ### Running the Project
 
-To get started with this project, first make sure you have Docker installed.
+To get started with this project, clone the repository to your laptop.
 
 ```shell
+$ git clone https://github.com/tmc/hackathon-starter.git
+```
+
+```shell
+$ cd hackathon-starter
 $ make run-sample-service-set
 ```
 
