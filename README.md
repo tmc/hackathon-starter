@@ -2,6 +2,10 @@
 
 Welcome to the Hackathon Starter Project! This project is designed to give you a comprehensive set of templates to kickstart your coding journey, whether you're participating in a hackathon or just exploring on your own. It features a variety of backends and a frontend template, plus a gateway and Docker compose examples to tie everything together.
 
+It's meant to get you from zero to having LLM-backed apps in just a few minutes!
+
+![Browser Test Output](./load-generation/animate.gif)
+
 ## Getting Started
 
 ### Pre-requisites
