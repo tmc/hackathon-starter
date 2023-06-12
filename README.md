@@ -4,7 +4,7 @@ Welcome to the Hackathon Starter Project! This project is designed to give you a
 
 It's meant to get you from zero to having LLM-backed apps in just a few minutes!
 
-![Browser Test Output](./load-generation/animate.gif)
+![Browser Test Output](./load-generation/animation.gif)
 
 ## Getting Started
 
