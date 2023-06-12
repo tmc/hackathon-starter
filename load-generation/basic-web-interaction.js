@@ -12,12 +12,12 @@ export default async function () {
     page.goto('http://localhost:3000');
     await page.waitForNavigation();
 
-    for (let i = 0; i < 10; i++) { // adjust as needed
+    for (let i = 0; i < 50; i++) { // adjust as needed
         // pad the vu and the iteration number with zeros:
         const vuIndex = String(__VU).padStart(3, '0');
         const ssIndex = String(i).padStart(3, '0');
         page.screenshot({ path: `.${vuIndex}-${ssIndex}.png` });
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(50);
     }
 
     browser.close();
