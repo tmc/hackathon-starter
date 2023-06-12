@@ -53,6 +53,10 @@ The [Apollo GraphQL Sandbox](http://localhost:3000/sandbox):
 **note**: Run `make port-doctor` to see if these ports are already bound by another process.
 
 ## GraphQL Federated Gateway
+A key component in this stack is [Apollo Router](https://www.apollographql.com/docs/router/) which enables aggregating across several backends.
+
+As long as a backend component has a `schema.graphql` file that it can fulfill requests will get to them. See the `make generate` target under [./gateway](./gateway).
+
 ![GraphQL Gateway Screenshot](./gateway-screenshot.png)
 
 Showing the result of
