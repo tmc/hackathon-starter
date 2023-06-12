@@ -88,7 +88,6 @@ services:
       - PROMETHEUS_QUERY_NAMESPACE=span_metrics
 
   prometheus:
-    container_name: prometheus
     image: prom/prometheus:latest
     restart: always
     command:

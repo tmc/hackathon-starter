@@ -9,7 +9,7 @@ run-basic-load-generation: deps ## Run basic load generation
 .PHONY: run-browser-load-generation
 run-browser-load-generation: deps browser-deps ## Run browser load generation
 	@echo "Running browser load generation"
-	@K6_BROWSER_ENABLED=true k6 run basic-web-interaction.js
+	@K6_BROWSER_ENABLED=true k6 run --address="" basic-web-interaction.js
 	@convert -delay 100 -loop 0 .001-* animation.gif
 
 .PHONY: run-browser-load-generation-via-chrome-ws

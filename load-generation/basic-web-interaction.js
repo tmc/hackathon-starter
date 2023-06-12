@@ -17,7 +17,7 @@ export default async function () {
         const vuIndex = String(__VU).padStart(3, '0');
         const ssIndex = String(i).padStart(3, '0');
         page.screenshot({ path: `.${vuIndex}-${ssIndex}.png` });
-        await page.waitForTimeout(1000);
+        await page.waitForTimeout(500);
     }
 
     browser.close();

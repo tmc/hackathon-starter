@@ -1,5 +1,9 @@
-docker_compose("./docker-compose.yml", project_name="hackathon-x")
+# This project usese Tilt to manage the development environment.
+# The project_name is used to namespace the docker-compose services.
+docker_compose("./docker-compose.yml", project_name="project-x")
 
+# Frontend resources.
+# The local_resource function runs a command on the local machine.
 local_resource("react-frontend",
   allow_parallel=True,
   serve_cmd="cd ../react-frontend; make run",
@@ -10,17 +14,37 @@ local_resource("react-frontend",
   ],
 )
 local_resource("generate-graphql-types",
+  allow_parallel=True,
   serve_cmd="cd ../react-frontend; make watch-codegen",
   labels="frontend",
 )
 
-dc_resource("database", labels="storage")
-dc_resource("redis", labels="storage")
-
+# Backend resources.
 dc_resource("backend-a", labels="backend")
 dc_resource("backend-b", labels="backend")
 dc_resource("gateway", labels="backend")
 
+# Observability and Telemetry
 dc_resource("jaeger", labels="telemetry")
 dc_resource("otel-collector", labels="telemetry")
 dc_resource("prometheus", labels="telemetry")
+
+# Storage
+dc_resource("database", labels="storage")
+dc_resource("redis", labels="storage")
+
+# Load Generator
+local_resource("load-generator",
+  allow_parallel=True,
+  serve_cmd="cd ../load-generation; make run",
+  labels="load-generator",
+  auto_init=False,
+)
+
+# Browser Tests
+local_resource("browser-tests",
+  allow_parallel=True,
+  serve_cmd="cd ../load-generation; make run-browser-load-generation-via-chrome-ws",
+  labels="browser-tests",
+  auto_init=False,
+)
