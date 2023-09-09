@@ -1,6 +1,6 @@
 # This project usese Tilt to manage the development environment.
 # The project_name is used to namespace the docker-compose services.
-docker_compose("./docker-compose.yml", project_name="project-x")
+docker_compose("./docker-compose.yml", project_name="codegen")
 
 # Frontend resources.
 # The local_resource function runs a command on the local machine.
