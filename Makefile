@@ -6,7 +6,7 @@ run-sample-service-set: ## Run a sample service set.
 	@echo "Running sample service set..."
 	@echo "To clean up and shut down all resources associated with this project, run 'make clean'"
 	@cd ./dev-harness && make deps
-	@cd ./dev-harness && tilt up
+	@cd ./dev-harness && tilt up --legacy
 
 .PHONY: generate
 generate: ## Generate code.
