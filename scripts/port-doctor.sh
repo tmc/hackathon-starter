@@ -29,8 +29,6 @@ else
   ports=("$@")
 fi
 
-
-
 function is_port_available() {
   # Check if the port is available to use.
   # If the port is available, returns empty string.

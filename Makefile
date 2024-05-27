@@ -11,30 +11,18 @@ run-sample-service-set: ## Run a sample service set.
 .PHONY: generate
 generate: ## Generate code.
 	@echo "Generating code..."
-	@cd ./graphene-backend && make generate
-	@cd ./fastapi-backend && make generate
-	@cd ./go-graphql-backend && make generate
+	@cd ./cudalive-backend && make generate
 	@cd ./gateway && make generate
 
 .PHONY: port-doctor
 port-doctor: ## Check if the required ports are available.
 	@echo "Checking if the required ports are available..."
-	@./scripts/port-doctor.sh \
-		3000 4000 8000 8080 \
-		5432 \
-		6379 6380 \
-		4317 4318 \
-		16686 14268
+	@./scripts/port-doctor.sh $(shell cat .ports)
 
 .PHONY: port-doctor-kevorkian
 port-doctor-kevorkian: ## Attempt to kill processes that are using the required ports.
 	@echo "Checking if the required ports are available..."
-	@./scripts/port-doctor.sh -k \
-		3000 4000 8000 8080 \
-		5432 \
-		6379 6380 \
-		4317 4318 \
-		16686 14268
+	@./scripts/port-doctor.sh -k $(shell cat .ports)
 
 .PHONY: run-load-generator
 run-load-generator: ## Run the load generator.
